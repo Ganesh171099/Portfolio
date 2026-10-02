@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack'
 import { Mail, ArrowUpRight } from 'lucide-react'
 import { MotionBox } from './motion'
 
-const GMAIL_URL = 'https://mail.google.com/mail/u/0/#inbox'
+const GMAIL_URL = 'mailto:gd17designer@gmail.com'
 
 export default function Contact() {
   return (
