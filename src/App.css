@@ -368,15 +368,20 @@
   z-index: 3;
 }
 
+.hero-glitch-slice {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .hero-img-wrap.is-glitching .hero-glitch-img.is-active {
   animation: hero-glitch-shake 0.42s steps(2, end);
 }
 
 .hero-img-wrap.is-glitching .hero-glitch-slice--a {
   opacity: 1;
-  background-image: var(--hero-glitch-bg);
-  background-size: cover;
-  background-position: center;
   mix-blend-mode: screen;
   animation: hero-glitch-slice-a 0.42s steps(3, end);
   clip-path: inset(18% 0 55% 0);
@@ -386,9 +391,6 @@
 
 .hero-img-wrap.is-glitching .hero-glitch-slice--b {
   opacity: 1;
-  background-image: var(--hero-glitch-bg);
-  background-size: cover;
-  background-position: center;
   mix-blend-mode: lighten;
   animation: hero-glitch-slice-b 0.42s steps(3, end);
   clip-path: inset(58% 0 12% 0);

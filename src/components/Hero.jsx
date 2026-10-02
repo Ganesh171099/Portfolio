@@ -5,12 +5,13 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { aboutText } from '../data/content'
 import TypewriterRoles from './TypewriterRoles'
-import { asset } from '../utils/asset'
+import heroBanner1 from '../assets/hero/hero-banner-1.jpg'
+import heroBanner2 from '../assets/hero/hero-banner-2.jpg'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const HERO_IMGS = [asset('hero-banner-1.jpg'), asset('hero-banner-2.jpg')]
-const GLITCH_INTERVAL_MS = 5000
+const HERO_IMGS = [heroBanner1, heroBanner2]
+const GLITCH_INTERVAL_MS = 8000
 const GLITCH_DURATION_MS = 420
 
 const SPARK_COLORS = ['#4B006E', '#9b4dca', '#c9a0e0', '#ffffff', '#e8b4ff', '#ffd6a5']
@@ -51,10 +52,35 @@ export default function Hero() {
   const barWrapRef = useRef(null)
   const [activeImg, setActiveImg] = useState(0)
   const [glitching, setGlitching] = useState(false)
+  const [imgsReady, setImgsReady] = useState(false)
+  const activeSrc = HERO_IMGS[activeImg]
+
+  // Preload both banners once so glitch swaps never re-hit the network.
+  useEffect(() => {
+    let cancelled = false
+    let loaded = 0
+    const loaders = HERO_IMGS.map((src) => {
+      const img = new Image()
+      img.decoding = 'async'
+      img.onload = img.onerror = () => {
+        loaded += 1
+        if (!cancelled && loaded >= HERO_IMGS.length) setImgsReady(true)
+      }
+      img.src = src
+      return img
+    })
+    return () => {
+      cancelled = true
+      loaders.forEach((img) => {
+        img.onload = null
+        img.onerror = null
+      })
+    }
+  }, [])
 
   useEffect(() => {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduceMotion) return undefined
+    if (reduceMotion || !imgsReady) return undefined
 
     let swapTimer
     let endTimer
@@ -73,7 +99,7 @@ export default function Hero() {
       window.clearTimeout(swapTimer)
       window.clearTimeout(endTimer)
     }
-  }, [])
+  }, [imgsReady])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -245,9 +271,6 @@ export default function Hero() {
             <Box
               className={`hero-img-wrap ${glitching ? 'is-glitching' : ''}`}
               ref={imgRef}
-              style={{
-                ['--hero-glitch-bg']: `url(${HERO_IMGS[activeImg]})`,
-              }}
             >
               {HERO_IMGS.map((src, i) => (
                 <Box
@@ -261,10 +284,26 @@ export default function Hero() {
                       : 'Creative graphical designer and developer portfolio banner'
                   }
                   aria-hidden={i !== activeImg}
+                  decoding="async"
+                  fetchPriority={i === 0 ? 'high' : 'low'}
                 />
               ))}
-              <Box className="hero-glitch-slice hero-glitch-slice--a" aria-hidden />
-              <Box className="hero-glitch-slice hero-glitch-slice--b" aria-hidden />
+              <Box
+                component="img"
+                className="hero-glitch-slice hero-glitch-slice--a"
+                src={activeSrc}
+                alt=""
+                aria-hidden
+                decoding="async"
+              />
+              <Box
+                component="img"
+                className="hero-glitch-slice hero-glitch-slice--b"
+                src={activeSrc}
+                alt=""
+                aria-hidden
+                decoding="async"
+              />
               <Box className="hero-glitch-scan" aria-hidden />
             </Box>
           </Box>
