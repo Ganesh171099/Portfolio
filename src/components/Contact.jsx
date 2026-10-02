@@ -6,7 +6,8 @@ import { Mail, ArrowUpRight } from 'lucide-react'
 import { MotionBox } from './motion'
 import { asset } from '../utils/asset'
 
-const GMAIL_URL = 'mailto:gd17designer@gmail.com'
+const GMAIL_URL =
+  'https://mail.google.com/mail/?view=cm&fs=1&to=gd17designer@gmail.com'
 
 export default function Contact() {
   return (
