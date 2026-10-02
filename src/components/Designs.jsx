@@ -10,6 +10,7 @@ import {
 import { designs } from '../data/content'
 import SectionWatermark from './SectionWatermark'
 import { MotionBox, MotionTypography } from './motion'
+import { asset } from '../utils/asset'
 
 const iconMap = {
   brand: Award,
@@ -58,7 +59,7 @@ export default function Designs() {
           <Box
             component="img"
             className="designs-visual-img"
-            src="/designs-banner.jpg"
+            src={asset('designs-banner.jpg')}
             alt="Graphic designing service — creative visuals for modern brands"
           />
         </MotionBox>

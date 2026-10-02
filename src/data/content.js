@@ -21,12 +21,12 @@ export const skills = {
     {
       title: 'Graphic Designing',
       desc: 'End-to-end visual identity work — logos, banners, brochures, social media kits, and cohesive brand systems crafted to look sharp across print and digital.',
-      image: '/skills-design-graphic.png',
+      image: 'skills-design-graphic.png',
     },
     {
       title: 'UI / UX Designing',
       desc: 'User-centered interface design — wireframes, flows, and polished screens built for clarity, usability, and a seamless product experience from first tap to final screen.',
-      image: '/skills-design-uiux.jpg',
+      image: 'skills-design-uiux.jpg',
     },
   ],
 }

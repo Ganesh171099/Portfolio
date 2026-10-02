@@ -4,6 +4,7 @@ import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { Mail, ArrowUpRight } from 'lucide-react'
 import { MotionBox } from './motion'
+import { asset } from '../utils/asset'
 
 const GMAIL_URL = 'mailto:gd17designer@gmail.com'
 
@@ -51,7 +52,7 @@ export default function Contact() {
           <Box
             component="img"
             className="contact-logo"
-            src="/logo-ganesh-contact.png?v=3"
+            src={asset('logo-ganesh-contact.png?v=3')}
             alt="Ganesh"
           />
         </Box>

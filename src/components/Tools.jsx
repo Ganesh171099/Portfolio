@@ -13,6 +13,7 @@ import { Sparkles, Smartphone } from 'lucide-react'
 import { tools } from '../data/content'
 import SectionWatermark from './SectionWatermark'
 import { MotionBox, MotionTypography } from './motion'
+import { asset } from '../utils/asset'
 
 const iconMap = {
   html: { Icon: SiHtml5, color: '#E34F26' },
@@ -115,7 +116,7 @@ export default function Tools() {
                 <Box
                   component="img"
                   className="tools-dev-img"
-                  src="/dev-workflow-banner.jpg"
+                  src={asset('dev-workflow-banner.jpg')}
                   alt="From concept to reality — idea, design, code, deploy"
                 />
               </MotionBox>
@@ -161,7 +162,7 @@ export default function Tools() {
           >
             <Box
               className="tools-banner-bg"
-              sx={{ backgroundImage: 'url(/design-tools-banner.jpg)' }}
+              sx={{ backgroundImage: `url(${asset('design-tools-banner.jpg')})` }}
             >
               <Box className="tools-banner-copy">
                 <Typography className="tools-banner-line">
@@ -177,7 +178,7 @@ export default function Tools() {
             <Box
               component="img"
               className="tools-banner-mobile-img"
-              src="/design-tools-banner-mobile.jpg"
+              src={asset('design-tools-banner-mobile.jpg')}
               alt="Design tools — Photoshop, Illustrator, Figma"
             />
             <Typography className="tools-banner-caption-mobile">

@@ -5,10 +5,11 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { aboutText } from '../data/content'
 import TypewriterRoles from './TypewriterRoles'
+import { asset } from '../utils/asset'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const HERO_IMGS = ['/hero-banner-1.jpg', '/hero-banner-2.jpg']
+const HERO_IMGS = [asset('hero-banner-1.jpg'), asset('hero-banner-2.jpg')]
 const GLITCH_INTERVAL_MS = 5000
 const GLITCH_DURATION_MS = 420
 

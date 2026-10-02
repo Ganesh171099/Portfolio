@@ -3,6 +3,7 @@ import Typography from '@mui/material/Typography'
 import { skills } from '../data/content'
 import SectionWatermark from './SectionWatermark'
 import { MotionBox, MotionTypography } from './motion'
+import { asset } from '../utils/asset'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
@@ -15,17 +16,17 @@ const fadeUp = {
 
 const DEV_IMAGES = [
   {
-    src: '/skills-dev-1.jpg',
+    src: asset('skills-dev-1.jpg'),
     alt: 'Fullstack web development — Think. Code. Innovate.',
     span: 2,
   },
   {
-    src: '/skills-dev-2.png',
+    src: asset('skills-dev-2.png'),
     alt: 'Breaking Code',
     span: 1,
   },
   {
-    src: '/skills-dev-3.jpg',
+    src: asset('skills-dev-3.jpg'),
     alt: 'Vibe Coding — Build apps by talking, fast',
     span: 1,
   },
@@ -120,7 +121,7 @@ export default function Skills() {
                 <Box
                   component="img"
                   className="skills-media-img"
-                  src="/skills-design-graphic.png"
+                  src={asset('skills-design-graphic.png')}
                   alt="Graphic Designing"
                 />
               </Box>
@@ -143,7 +144,7 @@ export default function Skills() {
                 <Box
                   component="img"
                   className="skills-media-img"
-                  src={skills.design[1].image}
+                  src={asset(skills.design[1].image)}
                   alt="UI / UX Designing"
                 />
               </Box>

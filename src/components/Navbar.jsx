@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 import IconButton from '@mui/material/IconButton'
 import { Menu, X } from 'lucide-react'
+import { asset } from '../utils/asset'
 
 const links = [
   { id: 'skills', href: '#skills', label: 'Skills' },
@@ -14,8 +15,8 @@ const links = [
 
 const mobileLinks = [{ id: 'top', href: '#top', label: 'Home' }, ...links]
 
-const LOGO_DARK = '/logo-ganesh-dark.png'
-const LOGO_LIGHT = '/logo-ganesh-light.png?v=3'
+const LOGO_DARK = asset('logo-ganesh-dark.png')
+const LOGO_LIGHT = asset('logo-ganesh-light.png?v=3')
 
 export default function Navbar() {
   const [light, setLight] = useState(false)
