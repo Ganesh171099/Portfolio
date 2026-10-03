@@ -6,8 +6,7 @@ import { Mail, ArrowUpRight } from 'lucide-react'
 import { MotionBox } from './motion'
 import { asset } from '../utils/asset'
 
-const GMAIL_URL =
-  'https://mail.google.com/mail/?view=cm&fs=1&to=gd17designer@gmail.com'
+const EMAIL_URL = 'mailto:gd17designer@gmail.com'
 
 export default function Contact() {
   return (
@@ -35,12 +34,7 @@ export default function Contact() {
             direction={{ xs: 'column', sm: 'row' }}
             useFlexGap
           >
-            <Link
-              className="btn-primary"
-              href={GMAIL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link className="btn-primary" href={EMAIL_URL}>
               <Mail size={18} /> Email me
             </Link>
             <Link className="btn-ghost" href="#projects">
